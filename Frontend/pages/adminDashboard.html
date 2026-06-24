@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+  </head>
+  <body>
+    <div class="adminNav">
+      <nav class="sidebar-container">
+        <div class="menu-items">
+          <a href="adminDashboard.html">Manage Products</a>
+          <a href="manageUser.html">Manage Users</a>
+          <a href="manageOrders.html">Manage Orders</a>
+          <a href="manageCategory.html">Manage Categories</a>
+        </div>
+        <footer class="admin-footer">
+          <p class="user-greeting">Hello, Admin</p>
+          <button class="logout-btn" onclick="logout()">Log Out</button>
+        </footer>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <header class="dashboard-header">
+        <h1>Manage Products</h1>
+        <button
+          class="add-btn"
+          onclick="window.location.href = 'addProduct.html'"
+        >
+          + Add New Product
+        </button>
+      </header>
+
+      <div id="productContainer" class="product-grid"></div>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/productDashboard.js"></script>
+  </body>
+</html>

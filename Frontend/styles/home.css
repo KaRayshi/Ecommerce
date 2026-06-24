@@ -1,0 +1,208 @@
+body { 
+    margin: 0; 
+    
+    /* THE NEW MAGIC TRICK */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Forces the background to always stretch to the bottom of the monitor */
+}
+
+/* The parent container needs to be a Flexbox container */
+nav {
+    background-color: #F4D187;
+    display: flex;                  /* Activates Flexbox */
+    justify-content: space-between; /* Pushes nav-left to the far left, and nav-right to the far right */
+    align-items: center;            /* Centers all text vertically from top to bottom */
+    padding: 15px 30px;             /* Adds breathing room inside the header (top/bottom, left/right) */
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Add spacing between the links inside each group */
+.nav-left a, .nav-right a {
+    margin-right: 20px;
+    text-decoration: none;          /* Removes the ugly default underline */
+    color: #333;                    /* Changes the default blue text color to a clean dark grey */
+    font-family: sans-serif;        /* Changes the font to a clean modern look */
+    font-weight: bold;
+}
+
+/* Remove the margin on the very last link so it touches the right edge perfectly */
+.nav-right a:last-child {
+    margin-right: 0;
+}
+
+#cat1{
+    font-family: sans-serif;        /* Changes the font to a clean modern look */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 1. The Container */
+.hero-container {
+    width: 100%;       /* Spans the entire width of the screen */
+    height: 400px;     /* Sets a fixed height so it doesn't take over the whole page */
+    overflow: hidden;  /* If the image is too big, chop off the excess invisibly */
+}
+
+/* 2. The Image */
+.hero-image {
+    width: 100%;       /* Forces the image to fill the container's width */
+    height: 100%;      /* Forces the image to fill the container's height */
+    object-fit: cover; /* THE MAGIC TRICK: Zooms and crops the image perfectly without squishing it */
+    object-position: center; /* Keeps the middle of the picture in focus when cropping */
+}
+
+/* Centers the entire category block under the Title */
+.category-container {
+    display: flex;
+    justify-content: center; 
+    padding: 40px 20px;
+}
+
+/* The actual Card Boundary */
+.catBox {
+    width: 220px;            /* How wide the card is */
+    height: 250px;           /* How tall the card is */
+    border: 1px solid #ccc;  /* A soft grey border */
+    border-radius: 8px;      /* Rounds the corners so it looks modern */
+    overflow: hidden;        /* Prevents the yellow label from bleeding outside the rounded corners! */
+    
+    display: flex;
+    flex-direction: column;  /* Stacks the image and the label top-to-bottom */
+    box-shadow: 0px 4px 10px rgba(0,0,0, 0.1); /* Soft 3D shadow */
+    margin-right: 10px;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.catBox:hover{
+    transform: translatey(-10px);
+}
+
+/* The top part of the card (where the picture will go) */
+.card-image {
+    height: 75%;             /* Takes up 75% of the card height */
+    background-color: white; /* Stays white until you add a real image */
+}
+
+.card-image:hover img{
+      filter: brightness(0.8); 
+}
+
+/* The bottom part of the card (The Yellow Label) */
+.card-label {
+    height: 25%;             /* Takes up the remaining 25% */
+    background-color: #F4D187; 
+    display: flex;
+    justify-content: center; /* Centers the text horizontally */
+    align-items: center;     /* Centers the text vertically */
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.button-container {
+    text-align: center;      /* Perfectly centers the button */
+    margin-bottom: 50px;
+}
+
+.submit-btn {
+    background-color: #ac740c; 
+    color: white;
+    padding: 12px 40px; 
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer; 
+    
+    /* ADD THESE TWO LINES FOR LINKS */
+    display: inline-block; 
+    text-decoration: none; 
+    font-family: sans-serif;
+}
+
+/* Adds a quick hover effect to the button */
+.submit-btn:hover {
+    background-color: #b17b09;
+}
+
+footer {
+    background-color: #F4D187;
+    height: 100px;
+}
+
+main {
+    flex: 1; /* Forces the main content to stretch, shoving the footer down as far as possible! */
+}
+
+/* --- The Container --- */
+.account-menu-container {
+    position: relative; /* Keeps the dropdown trapped inside this area */
+    display: inline-block;
+}
+
+/* --- The Account Button --- */
+.account-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: inherit; /* Automatically matches your other nav links */
+    padding: 8px 0;
+}
+
+.account-btn:hover {
+    color: #ffffff; /* Or whatever your nav hover color is! */
+}
+
+/* --- The Hidden Dropdown Box --- */
+.dropdown-content {
+    display: none; /* Hidden by default! */
+    position: absolute;
+    right: 0; /* Aligns to the right edge of the button */
+    top: 100%; /* Pushes it exactly below the button */
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); /* Adds a soft "modal" shadow */
+    border-radius: 6px;
+    z-index: 2000; /* Forces it to float on top of all other page content */
+    overflow: hidden;
+    margin-top: 10px; /* Small gap below the nav bar */
+}
+
+/* --- The JavaScript Trigger Class --- */
+.dropdown-content.show {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Dropdown Items --- */
+.dropdown-content a,
+.dropdown-content button {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+    background-color: #f1f1f1; /* Slight grey highlight on hover */
+}
+
+/* --- Red Logout Button --- */
+.dropdown-logout-btn {
+    color: #d9534f !important;
+    font-weight: bold;
+    border-top: 1px solid #eee !important; /* Adds a divider line above it */
+}

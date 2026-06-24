@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles/register.css" />
+  </head>
+  <body class="register">
+    <div class="formSection">
+      <form id="loginForm">
+        <div class="formBox">
+          <h1>Welcome</h1>
+
+          <div class="f1 row-spacing">
+            <div class="input-group">
+              <input
+                type="text"
+                id="usernameOrEmail"
+                placeholder="Username/Email"
+              />
+            </div>
+          </div>
+
+          <div class="row-spacing input-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <a href="">Forgot Password?</a>
+          <div class="button-container">
+            <button type="submit" class="submit-btn">Login</button>
+          </div>
+        </div>
+      </form>
+      <h4>
+        <span class="isolate">Don't have an Account?</span>
+        <a href="register.html">Register</a>
+      </h4>
+    </div>
+    <script src="../js/global.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

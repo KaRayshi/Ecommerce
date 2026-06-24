@@ -1,0 +1,18 @@
+# .NET Core Build Folders
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio & VS Code Workspaces
+.vs/
+.vscode/
+*.user
+*.suo
+
+# MAC OS (Just in case)
+.DS_Store
+
+# SECURITY: Never upload your local secrets or database credentials!
+# We keep the main appsettings.json public as a blueprint, but hide the development secrets.
+appsettings.Development.json
+secrets.json
+*.env

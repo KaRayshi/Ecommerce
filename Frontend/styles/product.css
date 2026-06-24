@@ -1,0 +1,67 @@
+body { margin: 0; }
+
+.category {
+    display: flex;             /* 1. Turns the container into a Flexbox */
+    justify-content: center;   /* 2. Now this command actually centers the buttons! */
+    gap: 30px;                 /* 3. Adds perfect, even spacing between the buttons (No margins needed!) */
+    padding-top: 70px;
+    align-items: center;
+}
+
+.category a {
+    display: inline-flex;      /* ⬅️ THE MAGIC FIX: Forces every link to behave exactly identically */
+    align-items: center;       /* ⬅️ Centers the text perfectly top-to-bottom inside the yellow box */
+    justify-content: center;   /* ⬅️ Centers the text perfectly left-to-right inside the yellow box */
+    
+    padding: 10px 25px;        
+    font-weight: bold;
+    font-family: sans-serif;
+    text-decoration: none;
+    background-color: #F4D187;
+    border-radius: 10px;       
+    color: #333;
+    transition: background-color 0.2s; 
+}
+
+.category a:hover {
+    background-color: #dfb660; /* Darkens the yellow slightly when hovered */
+}
+
+/* --- The Minus/Plus Stepper --- */
+/* --- The Minus/Plus Stepper --- */
+.qty-stepper {
+    display: flex;              /* 1. Changed back to normal flex so it gets its own line */
+    width: fit-content;         /* 2. Shrinks the box to perfectly hug the minus/plus buttons */
+    margin: 0 auto 15px auto;   /* 3. THE MAGIC FIX: "auto" pushes the box to the dead center! */
+    
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;   
+}
+
+.qty-btn {
+    background-color: #F4D187; /* Your theme yellow! */
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: #dfb660;
+}
+
+.qty-input {
+    width: 45px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    outline: none; /* Removes the blue glow when clicked */
+    pointer-events: none; /* Prevents the user from typing letters into the box */
+}

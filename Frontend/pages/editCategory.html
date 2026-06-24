@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Category</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+    <link rel="stylesheet" href="../styles/addProduct.css" />
+  </head>
+  <body>
+    <div class="adminNav">
+      <nav class="sidebar-container">
+        <div class="menu-items">
+          <a href="adminDashboard.html">Manage Products</a>
+          <a href="manageUser.html">Manage Users</a>
+          <a href="manageOrders.html">Manage Orders</a>
+          <a href="manageCategory.html">Manage Categories</a>
+        </div>
+        <footer class="admin-footer">
+          <p class="user-greeting">Hello, Admin</p>
+          <button class="logout-btn" onclick="logout()">Log Out</button>
+        </footer>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <header class="dashboard-header">
+        <h1>Edit Category</h1>
+      </header>
+
+      <div class="form-card">
+        <form id="editCategoryForm">
+          <div class="input-group">
+            <label for="categoryName">Category Name</label>
+            <input type="text" id="categoryName" placeholder="" required />
+          </div>
+
+          <div class="input-group">
+            <label for="categoryImage">Image URL</label>
+            <input type="text" id="categoryImage" placeholder="" required />
+          </div>
+
+          <div class="button-group">
+            <button
+              type="button"
+              class="cancel-btn"
+              onclick="window.location.href = 'manageCategory.html'"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="save-btn" id="updateBtn">
+              Update Category
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../js/global.js"></script>
+    <script src="../js/editCategory.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Orders - Admin</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+    <link rel="stylesheet" href="../styles/manageOrders.css" />
+  </head>
+  <body>
+    <div class="adminNav">
+      <nav class="sidebar-container">
+        <div class="menu-items">
+          <a href="adminDashboard.html">Manage Products</a>
+          <a href="manageUser.html">Manage Users</a>
+          <a href="manageOrders.html">Manage Orders</a>
+          <a href="manageCategory.html">Manage Categories</a>
+        </div>
+        <div class="admin-footer">
+          <p class="user-greeting">Hello, Admin</p>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </nav>
+    </div>
+
+    <main class="main-content">
+      <div class="dashboard-header">
+        <h2>Manage Orders</h2>
+      </div>
+
+      <hr style="margin-bottom: 20px; border: 1px solid #ddd" />
+
+      <div id="adminOrdersContainer" class="orders-list-wrapper"></div>
+    </main>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/manageOrders.js"></script>
+  </body>
+</html>

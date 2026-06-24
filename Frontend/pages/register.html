@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../styles/register.css" />
+  </head>
+  <body class="register">
+    <div class="formSection">
+      <form id="registerForm">
+        <div class="formBox">
+          <h1>Create an Account</h1>
+
+          <div class="f1 row-spacing">
+            <div class="input-group">
+              <input type="text" id="firstName" placeholder="First Name" />
+            </div>
+            <div class="input-group">
+              <input type="text" id="lastName" placeholder="Last Name" />
+            </div>
+          </div>
+
+          <div class="f1 row-spacing">
+            <div class="input-group">
+              <input type="text" id="username" placeholder="Username" />
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" placeholder="Email" required />
+            </div>
+          </div>
+
+          <div class="row-spacing input-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="submit-btn">Register</button>
+          </div>
+        </div>
+      </form>
+      <h4>Already have an Account? <a href="login.html">Login</a></h4>
+    </div>
+    <script src="../js/global.js"></script>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

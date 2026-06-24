@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders</title>
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/orders.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-left">
+          <a href="../pages/home.html">Home</a>
+          <a href="../pages/products.html">Products</a>
+        </div>
+        <div class="nav-right">
+          <a href="../pages/cart.html">Cart</a>
+          <a href="../pages/orders.html">Orders</a>
+
+          <a href="../pages/login.html" id="navLoginBtn" style="display: none"
+            >Login</a
+          >
+
+          <div
+            class="account-menu-container"
+            id="navAccountMenu"
+            style="display: none"
+          >
+            <button id="accountBtn" class="account-btn">Account ▼</button>
+            <div id="accountDropdown" class="dropdown-content">
+              <a href="../pages/userEditProfile.html">Profile</a>
+              <button onclick="logout()" class="dropdown-logout-btn">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="orders-layout">
+      <div class="dashboard-header">
+        <h2>My Order History</h2>
+      </div>
+
+      <hr style="margin-bottom: 20px; border: 1px solid #ddd" />
+
+      <div id="userOrdersContainer"></div>
+    </main>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/userOrders.js"></script>
+  </body>
+</html>

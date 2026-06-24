@@ -1,0 +1,80 @@
+/* --- The Stacked List Wrapper --- */
+.user-list-wrapper {
+    display: flex;
+    flex-direction: column; /* THE MAGIC FIX: Forces everything to stack top-to-bottom! */
+    gap: 15px;              /* Puts perfect spacing between every user row */
+}
+
+/* --- The Individual User Row --- */
+.user-row {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid #F4D187; /* A nice visual accent matching your theme */
+    
+    display: flex;
+    justify-content: space-between; /* Pushes text to left, buttons to right */
+    align-items: center;            /* Centers everything perfectly on the horizontal line */
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.user-email {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.user-role {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #eee;
+    width: fit-content;
+}
+
+/* Make Admins stand out! */
+.role-admin { background-color: #ffeaa7; color: #ac740c; }
+.role-user { background-color: #e0f7fa; color: #00838f; }
+
+/* --- Action Buttons --- */
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+.edit-btn:hover { background-color: #ddd; }
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.delete-btn:hover { background-color: #cc0000; }

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User - Admin</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+    <link rel="stylesheet" href="../styles/editUser.css" />
+  </head>
+  <body>
+    <nav class="adminNav">
+      <div class="sidebar-container">
+        <div class="menu-items">
+          <a href="adminDashboard.html">Manage Products</a>
+          <a href="manageUser.html">Manage Users</a>
+          <a href="manageOrders.html">Manage Orders</a>
+          <a href="manageCategory.html">Manage Categories</a>
+        </div>
+        <div class="admin-footer">
+          <p class="user-greeting">Hello, Admin</p>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="dashboard-header">
+        <h2>Edit User Profile</h2>
+      </div>
+      <hr style="margin-bottom: 20px; border: 1px solid #ddd" />
+      <div class="edit-form-container">
+        <form id="editUserForm">
+          <input type="hidden" id="editUserId" />
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="editUsername" class="edit-input" required />
+          </div>
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="editFirstName" class="edit-input" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="editLastName" class="edit-input" required />
+          </div>
+          <div class="form-group">
+            <label
+              >Email
+              <span class="otp-badge">OTP Required (Coming Soon)</span></label
+            >
+            <input
+              type="email"
+              id="editEmail"
+              class="edit-input"
+              disabled
+              title="Email updates require OTP verification!"
+            />
+          </div>
+          <button type="submit" id="saveUserBtn" class="save-btn-full">
+            Update User
+          </button>
+        </form>
+      </div>
+    </main>
+    <script src="../js/global.js"></script>
+    <script src="../js/editUser.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+.register {
+    background-image: url(../images/animate.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formSection {
+    background-color: #F4D187;
+    width: 50%;
+    padding: 60px; /* Increased slightly to give the form more breathing room */
+    box-sizing: border-box;
+   
+    /* The vertical centering magic */
+    display: flex;
+    flex-direction: column;  /* Keeps your form stacked top-to-bottom */
+    justify-content: center; /* Perfectly centers the form vertically in the yellow box */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px; /* Pushes the inputs down away from the title */
+    font-family: sans-serif;
+}
+
+/* -------------------------------------
+   FORM LAYOUT (The Rows & Columns) 
+--------------------------------------*/
+.f1 {
+    display: flex;
+    gap: 20px; 
+}
+
+.input-group {
+    flex: 1; 
+}
+
+.row-spacing {
+    margin-bottom: 20px; /* Replaces the need for <br> tags! */
+}
+
+/* -------------------------------------
+   THE "APP" POLISH (Inputs & Buttons) 
+--------------------------------------*/
+
+/* Targets ALL input boxes inside your form */
+input {
+    width: 100%;             /* Forces the box to fill its container */
+    padding: 12px;           /* Adds breathing room inside the box */
+    border: none;            /* Removes the harsh default black border */
+    border-radius: 6px;      /* Rounds the corners slightly */
+    box-sizing: border-box;  /* Stops padding from breaking the width */
+    font-size: 16px;         /* Prevents iPhones from auto-zooming */
+}
+
+.button-container {
+    text-align: center;      /* Perfectly centers the button */
+    margin-top: 30px;
+}
+
+.submit-btn {
+    background-color: #ac740c;  /* Dark grey modern button */
+    color: white;
+    padding: 12px 40px;      /* Makes the button thick and wide */
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;         /* Turns mouse into a pointing hand */
+}
+
+/* Adds a quick hover effect to the button */
+.submit-btn:hover {
+    background-color: #b17b09;
+}
+
+.formBox{
+    margin-top: 100px;
+}
+
+h4{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+h4 a{
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #1d1911;
+}
+
+a{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: #1d1911;
+}
+
+a:hover{
+    color: rgb(255, 255, 255);
+}
+

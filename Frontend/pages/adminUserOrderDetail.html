@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Details | Admin</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+    <link rel="stylesheet" href="../styles/adminUserOrderDetail.css" />
+  </head>
+  <body>
+    <div class="admin-layout-wrapper">
+      <main class="admin-main-content">
+        <div class="order-detail-main">
+          <div class="page-header">
+            <div class="header-left">
+              <button
+                class="back-btn"
+                onclick="window.location.href = 'manageOrders.html'"
+              >
+                &larr; Back to Orders
+              </button>
+              <h1>Order Details</h1>
+            </div>
+          </div>
+
+          <div class="order-detail-grid">
+            <div class="left-column">
+              <div class="detail-card">
+                <div class="card-header">
+                  <h2>Order #<span id="displayOrderId">...</span></h2>
+                </div>
+                <div class="customer-info">
+                  <h3>Customer Information</h3>
+                  <p>
+                    <strong>Name:</strong>
+                    <span id="displayCustomerName">...</span>
+                  </p>
+                  <p>
+                    <strong>Date Placed:</strong>
+                    <span id="displayOrderDate">...</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <h3>Items Ordered</h3>
+              <div class="items-list" id="detailItemsContainer">
+                <p>Loading items...</p>
+              </div>
+
+              <div class="order-summary">
+                <div class="grand-total">
+                  <span>Grand Total:</span>
+                  <span id="displayGrandTotal">₱0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/adminUserOrderDetail.js"></script>
+  </body>
+</html>

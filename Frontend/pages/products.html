@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link rel="stylesheet" href="../styles/product.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-left">
+          <a href="../pages/home.html">Home</a>
+          <a href="../pages/products.html">Products</a>
+        </div>
+        <div class="nav-right">
+          <a href="../pages/cart.html">Cart</a>
+          <a href="../pages/orders.html">Orders</a>
+
+          <a href="../pages/login.html" id="navLoginBtn" style="display: none"
+            >Login</a
+          >
+
+          <div
+            class="account-menu-container"
+            id="navAccountMenu"
+            style="display: none"
+          >
+            <button id="accountBtn" class="account-btn">Account ▼</button>
+            <div id="accountDropdown" class="dropdown-content">
+              <a href="../pages/userEditProfile.html">Profile</a>
+              <button onclick="logout()" class="dropdown-logout-btn">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div id="categoryBox" class="category"></div>
+      <div id="productContainer" class="product-grid"></div>
+    </main>
+    <script src="../js/global.js"></script>
+    <script src="../js/userProduct.js"></script>
+  </body>
+</html>

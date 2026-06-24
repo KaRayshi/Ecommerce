@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/userEditProfile.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-left">
+          <a href="../pages/home.html">Home</a>
+          <a href="../pages/products.html">Products</a>
+        </div>
+        <div class="nav-right">
+          <a href="../pages/cart.html">Cart</a>
+          <a href="../pages/orders.html">Orders</a>
+
+          <a href="../pages/login.html" id="navLoginBtn" style="display: none"
+            >Login</a
+          >
+
+          <div
+            class="account-menu-container"
+            id="navAccountMenu"
+            style="display: none"
+          >
+            <button id="accountBtn" class="account-btn">Account ▼</button>
+            <div id="accountDropdown" class="dropdown-content">
+              <a href="../pages/userEditProfile.html">Profile</a>
+              <button onclick="logout()" class="dropdown-logout-btn">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="profile-layout-wrapper">
+      <main class="profile-main-content">
+        <div class="profile-edit-container">
+          <div class="page-header">
+            <button class="back-btn" onclick="history.back()">
+              &larr; Back
+            </button>
+            <h1>Edit Profile</h1>
+          </div>
+
+          <div class="profile-card">
+            <div class="card-header">
+              <h2>Personal Information</h2>
+              <p>Update your account details below.</p>
+            </div>
+
+            <form id="editProfileForm">
+              <div class="form-group">
+                <label for="editUsername">Username</label>
+                <input
+                  type="text"
+                  id="editUsername"
+                  class="form-input"
+                  placeholder="Loading..."
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="editEmail">Email Address</label>
+                <input
+                  type="email"
+                  id="editEmail"
+                  class="form-input"
+                  placeholder="Loading..."
+                  disabled
+                  required
+                />
+                <small class="form-help"
+                  >Changing your email address may require verification.</small
+                >
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="cancel-btn"
+                  onclick="history.back()"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="save-btn" id="saveBtn">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="profile-card security-card">
+            <div class="card-header">
+              <h2>Security & Authentication</h2>
+              <p>Manage your password and verification settings.</p>
+            </div>
+            <div class="security-actions">
+              <button type="button" class="action-btn" id="requestOtpBtn">
+                Request OTP to Change Password
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/userEditProfile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: sans-serif; /* Cleaned up the font globally */
+}
+
+.adminNav {
+    width: 250px;
+    height: 100vh; /* ⬅️ Fixed the height trap! */
+    background-color: #F4D187;
+    position: fixed;
+}
+
+/* 1. The Flexbox Container */
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Forces the nav to take up the full 100vh of its parent */
+    
+}
+
+.menu-items{
+        padding-top: 90px;
+}
+/* 2. Your Link Styles (Mostly untouched!) */
+.menu-items a {
+    background-color: #ecaf2c;
+    display: block;
+    padding: 15px 20px; /* Made the click area slightly taller */
+    margin-top: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+.menu-items a:hover {
+    background-color: #dca326;
+}
+
+/* 3. The Footer Design */
+.admin-footer {
+    margin-top: auto; /* ⬅️ The Magic Wand! Shoves it to the bottom */
+    background-color: #e3be70; /* Slightly darker to separate it from the menu */
+    padding: 20px;
+    border-top: 1px solid #c9a558;
+    text-align: center;
+}
+
+.user-greeting {
+    margin: 0 0 15px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 4. A clean logout button */
+.logout-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.logout-btn:hover {
+    background-color: #555;
+}
+
+/* Push the content past the sidebar */
+.main-content {
+    margin-left: 250px; 
+    padding: 30px;
+    background-color: #f8f9fa; /* Light gray background */
+    min-height: 100vh;
+}
+
+/* The Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.add-btn {
+    background-color: #ecaf2c;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* The Magic Grid */
+.product-grid {
+    padding-top: 20px;
+    display: grid;
+    /* 1. Changed auto-fill to auto-fit, and locked the width to exactly 250px */
+    grid-template-columns: repeat(auto-fit, 250px);
+    
+    /* 2. Added this to shove the entire cluster of cards to the absolute center! */
+    justify-content: center; 
+    
+    gap: 20px;
+}
+
+/* The Product Card Design */
+.product-card {
+    
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 18px;
+}

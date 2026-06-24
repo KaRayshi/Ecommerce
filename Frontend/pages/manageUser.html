@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users - Admin</title>
+    <link rel="stylesheet" href="../styles/adminDashboard.css" />
+    <link rel="stylesheet" href="../styles/manageUsers.css" />
+  </head>
+  <body>
+    <nav class="adminNav">
+      <div class="sidebar-container">
+        <div class="menu-items">
+          <a href="adminDashboard.html">Manage Products</a>
+          <a href="manageUser.html">Manage Users</a>
+          <a href="manageOrders.html">Manage Orders</a>
+          <a href="manageCategory.html">Manage Categories</a>
+        </div>
+        <div class="admin-footer">
+          <p class="user-greeting">Hello, Admin</p>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="dashboard-header">
+        <h2>Manage Users</h2>
+        <button class="add-btn" onclick="openAddUserModal()">
+          + Add New User
+        </button>
+      </div>
+      <hr style="margin-bottom: 20px; border: 1px solid #ddd" />
+      <div id="userListContainer" class="user-list-wrapper"></div>
+    </main>
+    <script src="../js/global.js"></script>
+    <script src="../js/manageUser.js"></script>
+  </body>
+</html>

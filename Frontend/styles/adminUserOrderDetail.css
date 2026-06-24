@@ -1,0 +1,162 @@
+/* --- Global Background Fix --- */
+body, .admin-main-content {
+    background-color: #f4f6f8; 
+    font-family: Arial, sans-serif;
+}
+
+.order-detail-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.page-header h1 {
+    color: #333;
+    margin: 0;
+    font-size: 24px;
+}
+
+.back-btn {
+    background-color: rgb(209, 122, 23);
+    color: #2c1e1e;
+    border: 1px solid #ccc;
+    padding: 8px 16px; /* Added padding so the text isn't touching the border! */
+    border-radius: 6px; /* Soft rounded corners */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very soft shadow */
+    transition: all 0.2s ease-in-out;
+}
+
+.back-btn:hover {
+    border-color: #ac740c; /* Turns to your signature dark gold */
+    color: #ffffff;
+    background-color: #b48422; /* Gives the background a very faint, warm glow */
+}
+
+/* --- The Layout Grid --- */
+.order-detail-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Prevents the left side from stretching */
+    gap: 30px;
+    align-items: start; /* CRITICAL: Allows left side to be shorter than right side */
+}
+
+/* --- The Sticky Left Column --- */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky; /* Makes it float as you scroll! */
+    top: 20px;
+}
+
+/* --- The Cards --- */
+.detail-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    border-left: 5px solid #F4D187; /* The Gold Border */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.customer-info h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.customer-info p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* --- Item List --- */
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.detail-item-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item-row img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.item-text h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.item-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.item-total {
+    margin-left: auto;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* --- Summary --- */
+.order-summary {
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+}
+
+.grand-total {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}

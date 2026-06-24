@@ -1,0 +1,193 @@
+/* --- cart.css --- */
+
+/* 1. The Main Layout (Now Ultra-Wide to match the Nav!) */
+.cart-layout {
+    padding-top: 100px;
+    max-width: 1600px; /* Blown up from 1200px! */
+    width: 95%;        /* Forces it to use almost all horizontal space */
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    padding-bottom: 60px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #2c3e50;
+}
+
+/* Left Side: 70% of the screen */
+.cart-items-section {
+    flex: 7;
+}
+
+/* CRITICAL FIX: Target the container holding the cards, not the whole section! */
+#cartItemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Properly spaces the product cards */
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Right Side: 30% of the screen */
+.cart-summary-section {
+    flex: 3;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 25px;
+    height: fit-content; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); 
+}
+
+/* --- Individual Cart Item Card --- */
+.cart-card {
+    width: 100%; 
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* --- Modern Checkbox --- */
+.cart-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #ac740c; 
+    margin-right: 15px; 
+}
+
+/* Image Upgrade: Perfect squares with a soft border */
+.cart-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #f1f2f6;
+}
+
+.item-details {
+    flex: 1;
+    margin-left: 25px;
+}
+
+.item-details h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.item-price {
+    color: #27ae60; 
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --- Quantity Buttons --- */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.qty-btn {
+    background-color: #F4D187; 
+    border: none;
+    border-radius: 6px; 
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    color: #8c5b00;
+}
+
+.qty-btn:hover { 
+    background-color: #e5c378; 
+}
+
+.qty-controls span {
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* --- Delete Button --- */
+.delete-item-btn {
+    background-color: #fff0f0; 
+    color: #e74c3c; 
+    border: 1px solid #ffcccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.delete-item-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* --- Summary Box --- */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.total-row {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* --- Checkout Button --- */
+.checkout-btn {
+    width: 100%;
+    background-color: #ac740c;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 10px rgba(172, 116, 12, 0.2);
+}
+
+.checkout-btn:hover { 
+    background-color: #8c5b00; 
+}
+
+.checkout-btn:active {
+    transform: scale(0.98); 
+}
