@@ -83,6 +83,7 @@ function enforceAuthGuard() {
   }
 
   const publicPages = [
+    "verify-email.html",
     "login.html",
     "register.html",
     "home.html",

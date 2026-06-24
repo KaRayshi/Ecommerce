@@ -54,6 +54,11 @@ namespace Ecommerce.Controllers
                 return Unauthorized("Invalid Username");
             }
 
+            if (!user.EmailConfirmed)
+            {
+                return Unauthorized("Your email has not been verified yet. Please check your inbox for the OTP code.");
+            }
+
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if (!result.Succeeded)
@@ -105,14 +110,22 @@ namespace Ecommerce.Controllers
 
                 if (roleResult.Succeeded)
                 {
-                    var token = _tokenService.CreateToken(appUser, new List<string> { "User" });
+                    string code = _otpService.GenerateSecureOtp();
 
-                    return Ok(new AppUserDto
+                    var otpRecord = new OtpVerification
                     {
-                        Username = appUser.UserName,
                         Email = appUser.Email,
-                        Token = token
-                    });
+                        OtpCode = code,
+                        CreatedAt = DateTime.UtcNow,
+                        ExpiresAt = DateTime.UtcNow.AddMinutes(10),
+                        IsUsed = false
+                    };
+
+                    await _otpRepo.CreateOtpAsync(otpRecord);
+                    await _emailService.SendOtpEmailAsync(appUser.Email, code);
+                    // === NEW OTP LOGIC ENDS HERE ===
+
+                    return Ok(new { message = "Account created successfully. Please check your email for the verification code." });
                 }
                 else
                 {
@@ -123,6 +136,55 @@ namespace Ecommerce.Controllers
             {
                 return BadRequest(createdUser.Errors);
             }
+        }
+
+        [HttpPost("verify-email")]
+        public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailDto verifyDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            // 1. SAFE CHECK: Get all users with this email to avoid the "Sequence contains more than one element" crash
+            var users = await _userManager.Users
+                .Where(u => u.Email == verifyDto.Email)
+                .ToListAsync();
+
+            if (users.Count == 0) return BadRequest("User not found.");
+            if (users.Count > 1) return BadRequest("Multiple accounts found with this email. Please contact support.");
+
+            var user = users.First();
+
+            if (user.EmailConfirmed) return BadRequest("Email is already verified.");
+
+            // 2. Check the OTP
+            var otpRecord = await _otpRepo.GetLatestOtpByEmailAsync(verifyDto.Email);
+
+            if (otpRecord == null || otpRecord.OtpCode != verifyDto.OtpCode)
+                return BadRequest("Invalid OTP Code.");
+
+            if (otpRecord.IsUsed)
+                return BadRequest("This OTP has already been used.");
+
+            if (DateTime.UtcNow > otpRecord.ExpiresAt)
+                return BadRequest("This OTP has expired. Please request a new one.");
+
+            // 3. Success! Mark email as confirmed and mark OTP as used
+            user.EmailConfirmed = true;
+            await _userManager.UpdateAsync(user);
+
+            otpRecord.IsUsed = true;
+            await _otpRepo.UpdateOtpAsync(otpRecord);
+
+            // 4. Finally, generate the JWT token
+            var roles = await _userManager.GetRolesAsync(user);
+            var token = _tokenService.CreateToken(user, roles.ToList());
+
+            return Ok(new AppUserDto
+            {
+                Username = user.UserName,
+                Email = user.Email,
+                Token = token,
+                Role = roles.FirstOrDefault() ?? "User"
+            });
         }
 
         [HttpGet("View_All_User")]
@@ -244,7 +306,6 @@ namespace Ecommerce.Controllers
             var user = await _userManager.FindByEmailAsync(requestDto.Email);
             if (user == null)
             {
-                // Return Ok anyway to prevent email enumeration attacks
                 return Ok(new { message = "If this email exists, an OTP has been sent." });
             }
 

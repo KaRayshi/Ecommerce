@@ -32,9 +32,22 @@ form.addEventListener("submit", async function (event) {
     });
 
     if (response.ok) {
-      alert("Success! You are registered in the SQL Database!");
+      localStorage.setItem("pendingVerificationEmail", emailValue);
+
+      alert(
+        "Registration successful! Please check your email for the 6-digit code.",
+      );
+      window.location.href = "verify-email.html";
     } else {
-      alert("C# rejected the request. Check your backend console.");
+      const errorData = await response.json();
+      let errorMessage = "Registration failed:\n";
+
+      if (Array.isArray(errorData)) {
+        errorData.forEach((err) => (errorMessage += `- ${err.description}\n`));
+      } else {
+        errorMessage += JSON.stringify(errorData);
+      }
+      alert(errorMessage);
     }
   } catch (error) {
     console.error("The API is probably turned off.", error);

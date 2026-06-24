@@ -1,0 +1,65 @@
+// --- verify-email.js ---
+const form = document.getElementById("verifyForm");
+
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  // 1. Grab the email we saved during registration
+  const savedEmail = localStorage.getItem("pendingVerificationEmail");
+  const otpCode = document.getElementById("otpCode").value;
+
+  if (!savedEmail) {
+    alert("Session expired. Please try registering or logging in again.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const verifyBtn = document.getElementById("verifyBtn");
+  verifyBtn.innerHTML = "Verifying...";
+  verifyBtn.disabled = true;
+
+  const payload = {
+    email: savedEmail,
+    otpCode: otpCode,
+  };
+
+  try {
+    // 2. Hit your new C# endpoint
+    const response = await fetch(`${API_BASE_URL}/account/verify-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      // 3. SUCCESS! We finally got the Master Key (Token). Save it!
+      localStorage.setItem("ecommerceToken", data.token);
+
+      // Clear the temporary email
+      localStorage.removeItem("pendingVerificationEmail");
+
+      alert("Email verified successfully! Welcome to the store.");
+
+      // Route them to the correct dashboard based on role
+      if (data.role === "Admin") {
+        window.location.href = "adminDashboard.html";
+      } else {
+        window.location.href = "home.html";
+      }
+    } else {
+      // E.g., "Invalid OTP Code" or "OTP has expired"
+      const errorText = await response.text();
+      alert(errorText);
+    }
+  } catch (error) {
+    console.error("Server error:", error);
+    alert("Could not connect to the server.");
+  } finally {
+    verifyBtn.innerHTML = "Verify & Login";
+    verifyBtn.disabled = false;
+  }
+});

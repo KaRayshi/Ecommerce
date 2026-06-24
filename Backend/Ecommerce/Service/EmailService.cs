@@ -33,7 +33,7 @@ namespace Ecommerce.Service
             // 4. The Body
             var builder = new BodyBuilder
             {
-                HtmlBody = $"<h2>Password Reset Request</h2>" +
+                HtmlBody = $"<h2>OTP Request</h2>" +
                            $"<p>Your secure One-Time Password (OTP) is: <strong style='font-size:24px;'>{otpCode}</strong></p>" +
                            $"<p>This code will expire in 10 minutes.</p>" +
                            $"<p>If you did not request this, please ignore this email.</p>"

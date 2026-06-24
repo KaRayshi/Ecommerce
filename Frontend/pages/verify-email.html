@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Email</title>
+    <link rel="stylesheet" href="../styles/register.css" />
+  </head>
+  <body class="register">
+    <div class="formSection">
+      <form id="verifyForm">
+        <div class="formBox" style="margin-top: 50px">
+          <h1>Verify Your Email</h1>
+
+          <p
+            style="
+              text-align: center;
+              font-family: sans-serif;
+              margin-bottom: 20px;
+            "
+          >
+            We sent a 6-digit code to your email. Enter it below to activate
+            your account.
+          </p>
+
+          <div class="row-spacing input-group">
+            <input
+              type="text"
+              id="otpCode"
+              placeholder="Enter 6-Digit Code"
+              maxlength="6"
+              required
+              style="text-align: center; font-size: 24px; letter-spacing: 5px"
+            />
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="submit-btn" id="verifyBtn">
+              Verify & Login
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/verify-email.js"></script>
+  </body>
+</html>
