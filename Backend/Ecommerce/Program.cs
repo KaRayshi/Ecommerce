@@ -33,7 +33,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
     options.Password.RequiredLength = 8;
 })
 .AddRoles<IdentityRole>()
-.AddEntityFrameworkStores<ApplicationDbContext>();
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -108,6 +110,9 @@ builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IOtpRepository, OtpRepository>();
+builder.Services.AddScoped<Ecommerce.Service.OtpService>();
+builder.Services.AddScoped<Ecommerce.Service.EmailService>();
 
 var app = builder.Build();
 
