@@ -19,18 +19,14 @@ namespace Ecommerce.Service
         {
             var email = new MimeMessage();
 
-            // 1. Who is sending it?
             email.From.Add(new MailboxAddress(
                 _config["EmailSettings:SenderName"],
                 _config["EmailSettings:SenderEmail"]));
 
-            // 2. Who is receiving it?
             email.To.Add(MailboxAddress.Parse(toEmail));
 
-            // 3. The Subject
-            email.Subject = "Your Password Reset Security Code";
+            email.Subject = "Your OTP Request Code";
 
-            // 4. The Body
             var builder = new BodyBuilder
             {
                 HtmlBody = $"<h2>OTP Request</h2>" +

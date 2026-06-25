@@ -143,7 +143,6 @@ namespace Ecommerce.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            // 1. SAFE CHECK: Get all users with this email to avoid the "Sequence contains more than one element" crash
             var users = await _userManager.Users
                 .Where(u => u.Email == verifyDto.Email)
                 .ToListAsync();
@@ -155,7 +154,6 @@ namespace Ecommerce.Controllers
 
             if (user.EmailConfirmed) return BadRequest("Email is already verified.");
 
-            // 2. Check the OTP
             var otpRecord = await _otpRepo.GetLatestOtpByEmailAsync(verifyDto.Email);
 
             if (otpRecord == null || otpRecord.OtpCode != verifyDto.OtpCode)
@@ -167,14 +165,12 @@ namespace Ecommerce.Controllers
             if (DateTime.UtcNow > otpRecord.ExpiresAt)
                 return BadRequest("This OTP has expired. Please request a new one.");
 
-            // 3. Success! Mark email as confirmed and mark OTP as used
             user.EmailConfirmed = true;
             await _userManager.UpdateAsync(user);
 
             otpRecord.IsUsed = true;
             await _otpRepo.UpdateOtpAsync(otpRecord);
 
-            // 4. Finally, generate the JWT token
             var roles = await _userManager.GetRolesAsync(user);
             var token = _tokenService.CreateToken(user, roles.ToList());
 

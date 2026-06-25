@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="../styles/register.css" />
+  </head>
+  <body class="register">
+    <div class="formSection">
+      <form id="requestOtpForm">
+        <div class="formBox">
+          <h1>Reset Password</h1>
+          <p
+            style="
+              text-align: center;
+              font-family: sans-serif;
+              margin-bottom: 20px;
+            "
+          >
+            Enter your email address and we'll send you an OTP code to reset
+            your password.
+          </p>
+          <div class="row-spacing input-group">
+            <input
+              type="email"
+              id="resetEmail"
+              placeholder="Your Email Address"
+              required
+            />
+          </div>
+          <div class="button-container">
+            <button type="submit" class="submit-btn" id="requestBtn">
+              Send Code
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <form id="resetPasswordForm" style="display: none">
+        <div class="formBox">
+          <h1>Enter New Password</h1>
+          <p
+            style="
+              text-align: center;
+              font-family: sans-serif;
+              margin-bottom: 20px;
+            "
+          >
+            Type the 6-digit code sent to your email along with your new
+            password.
+          </p>
+          <div class="row-spacing input-group">
+            <input
+              type="text"
+              id="resetOtp"
+              placeholder="6-Digit OTP Code"
+              maxlength="6"
+              required
+              style="text-align: center; font-size: 20px; letter-spacing: 3px"
+            />
+          </div>
+          <div class="row-spacing input-group">
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="New Password"
+              required
+            />
+          </div>
+          <div class="button-container">
+            <button type="submit" class="submit-btn" id="resetBtn">
+              Update Password
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <h4><a href="login.html">Back to Login</a></h4>
+    </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/forgot-password.js"></script>
+  </body>
+</html>

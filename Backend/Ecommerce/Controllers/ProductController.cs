@@ -24,7 +24,7 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPost("add_product")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddProduct([FromBody] CreateProductDto createDto)
         {
             if (!ModelState.IsValid)
@@ -72,7 +72,7 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPut("update_product/{id:int}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto updateDto)
         {
             if (!ModelState.IsValid)
@@ -100,7 +100,7 @@ namespace Ecommerce.Controllers
         }
 
         [HttpDelete("delete_product/{id:int}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var existingProduct = await _productRepository.DeleteProductAsync(id);
