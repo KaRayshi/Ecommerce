@@ -16,11 +16,14 @@ requestForm.addEventListener("submit", async function (event) {
 
   try {
     // Change endpoint URL if yours is named differently (e.g., /account/forgot-password)
-    const response = await fetch(`${API_BASE_URL}/account/forgot-password`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: userEmail }),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/account/request-password-reset`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail }),
+      },
+    );
 
     if (response.ok) {
       alert("An OTP code has been sent to your email!");
@@ -62,11 +65,14 @@ resetForm.addEventListener("submit", async function (event) {
   };
 
   try {
-    const response = await fetch(`${API_BASE_URL}/account/reset-password`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/account/verify-otp-and-reset`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      },
+    );
 
     if (response.ok) {
       alert("Password updated successfully! Redirecting to login page...");

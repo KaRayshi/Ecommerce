@@ -299,7 +299,13 @@ namespace Ecommerce.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var user = await _userManager.FindByEmailAsync(requestDto.Email);
+            var users = await _userManager.Users
+               .Where(u => u.Email == requestDto.Email)
+               .ToListAsync();
+
+            if (users.Count > 1) return BadRequest("Multiple accounts found with this email. Please contact support.");
+
+            var user = users.FirstOrDefault();
             if (user == null)
             {
                 return Ok(new { message = "If this email exists, an OTP has been sent." });
@@ -339,7 +345,13 @@ namespace Ecommerce.Controllers
             if (DateTime.UtcNow > otpRecord.ExpiresAt)
                 return BadRequest("This OTP has expired. Please request a new one.");
 
-            var user = await _userManager.FindByEmailAsync(verifyDto.Email);
+            var users = await _userManager.Users
+               .Where(u => u.Email == verifyDto.Email)
+               .ToListAsync();
+
+            if (users.Count > 1) return BadRequest("Multiple accounts found with this email. Please contact support.");
+
+            var user = users.FirstOrDefault();
             if (user == null) return BadRequest("User not found.");
 
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);

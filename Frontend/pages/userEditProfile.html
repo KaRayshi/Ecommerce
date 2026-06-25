@@ -102,9 +102,52 @@
               <p>Manage your password and verification settings.</p>
             </div>
             <div class="security-actions">
-              <button type="button" class="action-btn" id="requestOtpBtn">
+              <button
+                type="button"
+                class="action-btn"
+                id="requestOtpBtn"
+                style="width: 100%"
+              >
                 Request OTP to Change Password
               </button>
+
+              <div
+                id="passwordResetSection"
+                style="display: none; margin-top: 20px"
+              >
+                <div class="form-group">
+                  <label>Enter 6-Digit OTP</label>
+                  <input
+                    type="text"
+                    id="profileOtpCode"
+                    class="form-input"
+                    maxlength="6"
+                    placeholder="123456"
+                    style="
+                      text-align: center;
+                      letter-spacing: 3px;
+                      font-size: 18px;
+                    "
+                  />
+                </div>
+                <div class="form-group">
+                  <label>New Password</label>
+                  <input
+                    type="password"
+                    id="profileNewPassword"
+                    class="form-input"
+                    placeholder="Enter new secure password"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="save-btn"
+                  id="confirmPasswordChangeBtn"
+                  style="width: 100%; margin-top: 10px"
+                >
+                  Confirm Password Change
+                </button>
+              </div>
             </div>
           </div>
         </div>
