@@ -25,7 +25,7 @@ function loadCategories(categoryArray) {
 
   categoryArray.forEach(function (category) {
     finalHTML += `
-      <a href="/pages/products.html?categoryId=${category.id}">
+      <a href="../pages/products.html?categoryId=${category.id}">
           ${category.name}
       </a>
     `;
