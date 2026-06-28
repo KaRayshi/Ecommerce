@@ -2,8 +2,11 @@
 
 // 1. THE MASTER URL
 // Change your base URL to this:
+// --- global.js ---
+
+// Change your base URL to this:
 const API_BASE_URL =
-  "https://ecommerceportfolio-bydyega6bjhdf5ea.southeastasia-01.azurewebsites.net";
+  "https://ecommerceportfolio-bydyega6bjhdf5ea.southeastasia-01.azurewebsites.net/api";
 
 // 2. THE MASTER TOKEN GRABBER
 function getToken() {
