@@ -19,8 +19,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://127.0.0.1:5500", "http://localhost:5500")
-                  .AllowAnyHeader()
+            policy.WithOrigins(
+                  "http://127.0.0.1:5500",
+                  "http://localhost:5500",
+                  "https://ecommerce-nine-theta-90.vercel.app" // Your live frontend!
+            )
+                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
 });
@@ -116,6 +120,21 @@ builder.Services.AddScoped<Ecommerce.Service.OtpService>();
 builder.Services.AddScoped<Ecommerce.Service.EmailService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        // This tells the app to run your food seeder every time it wakes up!
+        await DbSeeder.SeedDefaultDataAsync(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
