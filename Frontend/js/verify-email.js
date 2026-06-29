@@ -24,7 +24,6 @@ form.addEventListener("submit", async function (event) {
   };
 
   try {
-    // 2. Hit your new C# endpoint
     const response = await fetch(`${API_BASE_URL}/account/verify-email`, {
       method: "POST",
       headers: {
@@ -36,7 +35,7 @@ form.addEventListener("submit", async function (event) {
     if (response.ok) {
       const data = await response.json();
 
-      // 3. SUCCESS! We finally got the Master Key (Token). Save it!
+      // SUCCESS! We finally got the Master Key (Token). Save it!
       localStorage.setItem("ecommerceToken", data.token);
 
       // Clear the temporary email
@@ -63,3 +62,47 @@ form.addEventListener("submit", async function (event) {
     verifyBtn.disabled = false;
   }
 });
+
+// --- NEW RESEND OTP LOGIC ---
+async function resendOTP() {
+  const savedEmail = localStorage.getItem("pendingVerificationEmail");
+
+  if (!savedEmail) {
+    alert("Session expired. Please try registering again.");
+    window.location.href = "register.html";
+    return;
+  }
+
+  const resendText = document.getElementById("resendText");
+
+  // Visual feedback to prevent spam clicking
+  resendText.innerText = "Sending...";
+  resendText.style.pointerEvents = "none";
+  resendText.style.color = "gray";
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/account/resend-otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Note: We only need to send the email to trigger the resend
+      body: JSON.stringify({ email: savedEmail }),
+    });
+
+    if (response.ok) {
+      alert("A new verification code has been sent to your email!");
+    } else {
+      const errorText = await response.text();
+      alert(errorText);
+    }
+  } catch (error) {
+    console.error("Server error:", error);
+    alert("Could not connect to the server to resend OTP.");
+  } finally {
+    // Reset the text back to normal so they can click it again if needed
+    resendText.innerText = "Resend OTP";
+    resendText.style.pointerEvents = "auto";
+    resendText.style.color = "#007bff";
+  }
+}

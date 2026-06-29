@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Ecommerce.Data
 {
@@ -19,6 +20,9 @@ namespace Ecommerce.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<OtpVerification>()
+            .HasIndex(o => new { o.Email, o.CreatedAt });
 
             builder.Entity<CartItem>()
             .HasOne(c => c.AppUser)

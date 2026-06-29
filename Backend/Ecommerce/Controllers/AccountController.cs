@@ -365,5 +365,44 @@ namespace Ecommerce.Controllers
             return Ok(new { message = "Password has been successfully reset." });
         }
 
+        [HttpPost("resend-otp")]
+        public async Task<IActionResult> ResendOtp([FromBody] ResendOtpDto resendDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var user = await _userManager.FindByEmailAsync(resendDto.Email);
+            if (user == null) return BadRequest("User not found.");
+
+            if (user.EmailConfirmed) return BadRequest("Email is already verified. Please log in.");
+
+            var newOtpCode = new Random().Next(100000, 999999).ToString();
+
+            var newOtpRecord = new OtpVerification
+            {
+                Email = resendDto.Email,
+                OtpCode = newOtpCode,
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddMinutes(5), 
+                IsUsed = false
+            };
+            await _otpRepo.CreateOtpAsync(newOtpRecord);
+
+            try
+            {
+                await _emailService.SendOtpEmailAsync(
+                    resendDto.Email,
+                    $"Your new 6-digit verification code is: <b>{newOtpCode}</b>. It will expire in 5 minutes."
+                );
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Failed to send email. Please try again later.");
+            }
+
+            return Ok("A new verification code has been sent to your email.");
+        }
+
+
+
     }
 }
